@@ -19,8 +19,8 @@ export default {
   },
   async specials(context, ingredientId) {
     try {
-      const res = await Axios.get('/specials?ingredientId=' + ingredientId)
-      context.commit('recipe', res.data)
+      const res = await Axios.get('/specials')
+      context.commit('specials', res.data)
     } catch (error) {
       throw error
     }

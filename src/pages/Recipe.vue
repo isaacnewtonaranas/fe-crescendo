@@ -25,16 +25,37 @@
                 <q-item-label>
                   {{ ingredient.name }}
                 </q-item-label>
-                <q-item-label>
-                  <q-chip
-                    class="glossy"
-                    square
-                    color="red"
-                    text-color="white"
-                    icon="location_on"
-                  >
-                    Bookmark
-                  </q-chip>
+                <q-item-label
+                  class="specials"
+                  v-if="findSpecial(specials, ingredient)"
+                >
+                  <div class="chip">
+                    <q-chip>
+                      <q-avatar
+                        :icon="getIcon(findSpecial(specials, ingredient).type)"
+                        color="red"
+                        text-color="white"
+                      />
+                      {{ findSpecial(specials, ingredient).type.toUpperCase() }}
+                    </q-chip>
+                  </div>
+                  <div>
+                    <b>{{ findSpecial(specials, ingredient).title }}</b>
+                  </div>
+                  <div>
+                    {{ findSpecial(specials, ingredient).text }}
+                  </div>
+                  <div v-if="findSpecial(specials, ingredient).geo">
+                    <a
+                      class="geo"
+                      :href="
+                        '//www.google.com/maps/search/' +
+                          findSpecial(specials, ingredient).geo
+                      "
+                    >
+                      <q-btn label="Go Now" color="red" />
+                    </a>
+                  </div>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -66,6 +87,9 @@ export default {
   computed: {
     recipe() {
       return this.$store.getters['onsale/recipe'][0]
+    },
+    specials() {
+      return this.$store.getters['onsale/specials']
     }
   },
   data() {
@@ -79,10 +103,30 @@ export default {
     async getOneRecipe(uuid) {
       try {
         await this.$store.dispatch('onsale/recipe', uuid)
+        await this.$store.dispatch('onsale/specials', uuid)
       } catch (error) {
         return
       } finally {
         this.loading = false
+      }
+    },
+    findSpecial(special, ingredient) {
+      return special.find(spc => spc.ingredientId == ingredient.uuid)
+    },
+    getIcon(type) {
+      switch (type) {
+        case 'event':
+          return 'location_on'
+          break
+        case 'local':
+          return 'location_on'
+          break
+        case 'promocode':
+          return 'qr_code'
+          break
+        case 'sale':
+          return 'label'
+          break
       }
     }
   }
@@ -92,5 +136,17 @@ export default {
 h4,
 h6 {
   margin: 0px;
+}
+.geo {
+  text-decoration: none;
+}
+.specials {
+  padding: 10px;
+}
+.specials div {
+  margin-bottom: 7px;
+}
+.specials .chip {
+  margin-left: -7px;
 }
 </style>
