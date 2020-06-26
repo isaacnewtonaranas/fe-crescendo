@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md row q-gutter-md justify-center">
-    <MenuItem />
+    <MenuItem :recipe="recipe" v-for="(recipe, i) in recipes" :key="i" />
   </q-page>
 </template>
 
