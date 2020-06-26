@@ -16,5 +16,13 @@ export default {
     } catch (error) {
       throw error
     }
+  },
+  async specials(context, ingredientId) {
+    try {
+      const res = await Axios.get('/specials?ingredientId=' + ingredientId)
+      context.commit('recipe', res.data)
+    } catch (error) {
+      throw error
+    }
   }
 }
