@@ -5,7 +5,7 @@
     <q-card-section>
       <q-btn
         fab
-        color="primary"
+        color="red"
         icon="restaurant_menu"
         class="absolute"
         style="top: 0; right: 12px; transform: translateY(-50%);"
@@ -36,7 +36,7 @@
     <q-card-actions>
       <q-btn
         flat
-        color="primary"
+        color="red"
         :to="{ name: 'recipe', params: { uuid: recipe.uuid } }"
       >
         Read More
