@@ -69,7 +69,7 @@
                   Optional
                 </q-item-label>
                 <q-item-label>
-                  {{ direction.instructions }}
+                  {{ i + 1 }}. {{ direction.instructions }}
                 </q-item-label>
               </q-item-section>
             </q-item>
