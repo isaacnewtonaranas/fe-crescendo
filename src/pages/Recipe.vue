@@ -11,8 +11,6 @@
           <div>Servings: {{ recipe.servings }}</div>
           <div>Preparation Time: {{ recipe.prepTime }} mins</div>
           <div>Cook Time: {{ recipe.cookTime }} mins</div>
-          <div>Posted: {{ recipe.postDate }}</div>
-          <div>Modified: {{ recipe.editDate }}</div>
           <q-separator class="q-my-lg" />
           <h6>Ingredients</h6>
           <q-list bordered separator>

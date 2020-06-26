@@ -1,5 +1,5 @@
 <template>
-  <q-card class="menu-item flex">
+  <q-card class="menu-item">
     <q-img :src="api + recipe.images.medium" />
 
     <q-card-section>
@@ -28,13 +28,12 @@
       <div class="text-subtitle1">
         {{ recipe.description }}
       </div>
-      <div class="text-caption text-grey">Serving: {{ recipe.servings }}</div>
+      <div class="text-subtitle1">Serving: {{ recipe.servings }}</div>
     </q-card-section>
 
     <q-separator class="self-end" />
 
-    <q-card-actions class="self-end">
-      <q-btn flat round icon="read_more" />
+    <q-card-actions>
       <q-btn
         flat
         color="primary"
