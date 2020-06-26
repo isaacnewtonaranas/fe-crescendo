@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import example from './module-example'
+import onsale from './onsale'
 
 Vue.use(Vuex)
 
@@ -18,11 +19,12 @@ export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example
-    },
+      onsale
+    }
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
+    // strict: process.env.DEV
   })
 
   return Store

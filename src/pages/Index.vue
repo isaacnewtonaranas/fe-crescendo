@@ -6,6 +6,12 @@
 
 <script>
 export default {
-  name: 'PageIndex'
+  async mounted() {
+    try {
+      await this.$store.dispatch('onsale/recipes')
+    } catch (error) {
+      return
+    }
+  }
 }
 </script>
