@@ -9,6 +9,7 @@
         icon="restaurant_menu"
         class="absolute"
         style="top: 0; right: 12px; transform: translateY(-50%);"
+        :to="{ name: 'recipe', params: { uuid: recipe.uuid } }"
       />
 
       <div class="row no-wrap items-center">

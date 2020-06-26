@@ -5,7 +5,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       {
-        path: 'recipe/:id',
+        path: 'recipe/:uuid',
         name: 'recipe',
         props: true,
         component: () => import('pages/Recipe.vue')

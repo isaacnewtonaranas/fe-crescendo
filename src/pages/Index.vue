@@ -14,11 +14,16 @@ export default {
       return this.$store.getters['onsale/recipes']
     }
   },
-  async mounted() {
-    try {
-      await this.$store.dispatch('onsale/recipes')
-    } catch (error) {
-      return
+  mounted() {
+    this.getAllRecipes()
+  },
+  methods: {
+    async getAllRecipes() {
+      try {
+        await this.$store.dispatch('onsale/recipes')
+      } catch (error) {
+        return
+      }
     }
   }
 }

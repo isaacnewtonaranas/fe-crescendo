@@ -9,9 +9,9 @@ export default {
       throw error
     }
   },
-  async recipe(context, id) {
+  async recipe(context, uuid) {
     try {
-      const res = await Axios.get('/recipes/' + id)
+      const res = await Axios.get('/recipes?uuid=' + uuid)
       context.commit('recipe', res.data)
     } catch (error) {
       throw error
