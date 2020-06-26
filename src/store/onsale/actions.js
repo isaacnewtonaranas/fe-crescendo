@@ -8,5 +8,13 @@ export default {
     } catch (error) {
       throw error
     }
+  },
+  async recipe(context, id) {
+    try {
+      const res = await Axios.get('/recipes/' + id)
+      context.commit('recipe', res.data)
+    } catch (error) {
+      throw error
+    }
   }
 }
