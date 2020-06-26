@@ -1,10 +1,10 @@
 import Axios from 'axios'
 
 export default {
-  async recipes() {
+  async recipes(context) {
     try {
       const res = await Axios.get('/recipes')
-      console.log(res)
+      context.commit('recipes', res.data)
     } catch (error) {
       throw error
     }

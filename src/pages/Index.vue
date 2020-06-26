@@ -1,9 +1,6 @@
 <template>
   <q-page class="q-pa-md row q-gutter-md justify-center">
     <MenuItem />
-    <MenuItem />
-    <MenuItem />
-    <MenuItem />
   </q-page>
 </template>
 
@@ -11,6 +8,11 @@
 export default {
   components: {
     MenuItem: () => import('../components/MenuItem')
+  },
+  computed: {
+    recipes() {
+      return this.$store.getters['onsale/recipes']
+    }
   },
   async mounted() {
     try {
